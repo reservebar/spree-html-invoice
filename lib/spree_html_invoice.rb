@@ -8,10 +8,10 @@ module HtmlInvoice
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*.rb")) do |c|
         Rails.env.production? ? require(c) : load(c)
       end
-      Deface::Override.new(:virtual_path => "admin/shared/_order_tabs",
+      Deface::Override.new(:virtual_path => "spree/admin/shared/_order_tabs",
                            :name => "Add buttons to sidebar on order show",
                            :insert_after => ".sidebar",
-                           :partial => "admin/orders/html_buttons",
+                           :partial => "spree/admin/orders/html_buttons",
                            :disabled => false)
 
     end
