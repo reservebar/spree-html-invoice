@@ -13,7 +13,7 @@ en:
   packaging_slip:
     header: Packaging Slip
     print: Print Slip
-    thanks: Please check the contens immediately.
+    thanks: Please check the contents of the package.
   reminder:
     header: Payment Reminder
     print: Reminder
