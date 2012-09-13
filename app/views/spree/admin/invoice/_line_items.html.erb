@@ -13,8 +13,8 @@
     <td class="cell"><%=item.variant.full_name%></td>
     <td class="cell"><%=number_to_currency(item.tax_price) unless @packaging_slip or @receipt%></td>
     <td class="cell"><%=item.quantity %></td>
-    <td class="gift_packaging"><%= item.gift_package ? item.gift_package.title : "None" %></td>
-    <td class="cell" align="right"><%=number_to_currency(item.tax_price * item.quantity) unless
+    <td class="gift_packaging"><%= item.gift_package ? item.gift_package.title : "None" %> <%= "(#{I18n.t(:price)}: #{number_to_currency(item.gift_package.price)})" unless !item.gift_package or @packaging_slip or @receipt %></td>
+    <td class="cell" align="right"><%=number_to_currency(item.tax_price * item.quantity + (item.gift_package ? item.gift_package.price * item.quantity : 0)) unless
      @packaging_slip%></td>
   </tr>
   <% end %>

@@ -1,7 +1,7 @@
 <%   # Inside line_items table with 5 columns
 sub = I18n.t(:subtotal)
 sub += " 0% " if Spree::Config[:show_price_inc_vat]
-totals = [ [ sub , number_to_currency(@order.item_total)]]
+totals = [ [ sub , number_to_currency(@order.item_total + @order.gift_packaging_total)]]
 @order.adjustments.each do |charge|
   totals << [ charge.label , number_to_currency(charge.amount) ] unless (charge.amount == 0 && @receipt)
 end
