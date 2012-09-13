@@ -15,14 +15,18 @@ end
 %>
 <table class="address">
   <tr>
+    <% unless @packaging_slip %>
     <td width="45%" class="billing_header bold"><%=I18n.t(:billing_address)%></td>
     <td width="17%"></td>
+    <% end %>
     <td width="45%" class="shiping_header bold"><%=I18n.t(:shipping_address)%></td>
   </tr>
   <% addresses.each do |row| %>
     <tr>   
+      <% unless @packaging_slip %>
       <td height="15px" width="45%" class="billing" class="cell"><%=row[0]%> </td>
-    <td width="17%"></td>
+    	<td width="17%"></td>
+    	<% end %>
       <td height="15px" width="45%" class="shiping_header" class="cell"><%=row[1]%> </td>
     </tr>
   <%end%>
