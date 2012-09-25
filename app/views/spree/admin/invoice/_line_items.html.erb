@@ -4,6 +4,7 @@
     <td class="desc bold"><%= I18n.t(:item_description) %></td>
     <td class="price bold"><%=I18n.t(:price)  unless @packaging_slip or @receipt%></td>
     <td class="qty bold"><%=I18n.t(:qty) %> </td>
+    <th class="size bold"><%= t(:size) %></th>
     <td class="gift_package bold"><%= t(:gift_packaging) %></td>
     <td class="total bold" align="right"><%=I18n.t(:total) unless @packaging_slip%></td>
   </tr>
@@ -13,6 +14,7 @@
     <td class="cell"><%=item.variant.full_name%></td>
     <td class="cell"><%=number_to_currency(item.tax_price) unless @packaging_slip or @receipt%></td>
     <td class="cell"><%=item.quantity %></td>
+    <td class="cell"><%= item.variant.bottle_size %></td>
     <td class="gift_packaging"><%= item.gift_package ? item.gift_package.title : "None" %> <%= "(#{I18n.t(:price)}: #{number_to_currency(item.gift_package.price)})" unless !item.gift_package or @packaging_slip or @receipt %></td>
     <td class="cell" align="right"><%=number_to_currency(item.tax_price * item.quantity + (item.gift_package ? item.gift_package.price * item.quantity : 0)) unless
      @packaging_slip%></td>
