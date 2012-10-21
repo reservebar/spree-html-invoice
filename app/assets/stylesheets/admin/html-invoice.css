@@ -22,21 +22,19 @@ div.address {
 }
 div.wrapper {
   width: 620px;
-  height: 540px;
   border-top:1px solid grey;
   padding: 6px;
-
 }
 
 div.thanks {
   width: 620px;
-  margin-top: 20px;
+  margin: 20px 0;
+  padding:6px;
 }
 div.spacer {
   width: 620px;
 }
 div.totals {
-  height: 100px;
   margin-bottom: 20px;
   float: right;
 }
