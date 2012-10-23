@@ -4,7 +4,7 @@
     <td class="desc bold"><%= I18n.t(:item_description) %></td>
     <td class="price bold"><%=I18n.t(:price)  unless @packaging_slip or @receipt%></td>
     <td class="qty bold"><%=I18n.t(:qty) %> </td>
-    <th class="size bold"><%= t(:size) %></th>
+    <td class="size bold">Size</td>
     <td class="gift_package bold"><%= t(:gift_packaging) %></td>
     <td class="total bold" align="right"><%=I18n.t(:total) unless @packaging_slip%></td>
   </tr>
