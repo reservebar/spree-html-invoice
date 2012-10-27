@@ -11,7 +11,7 @@
   <% @order.line_items.each do |item| %>
   <tr>
     <td class="cell"><%=item.variant.product.sku unless @receipt%></td>
-    <td class="cell"><%=item.variant.full_name%></td>
+    <td class="cell"><%=sanitize(item.variant.full_name, :tags => %w(sup))%></td>
     <td class="cell"><%=number_to_currency(item.tax_price) unless @packaging_slip or @receipt%></td>
     <td class="cell"><%=item.quantity %></td>
     <td class="cell"><%= item.variant.bottle_size %></td>
