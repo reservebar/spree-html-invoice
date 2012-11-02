@@ -1,0 +1,10 @@
+<table class="header">
+  <tr>
+    <td width="345"><%= wicked_pdf_image_tag 'logo.png' %></td>
+    <td width="345"><div align="right">
+      <p class="title"><%= I18n.t("#{params[:template]}.header") %></p>
+      <p class="bold"><%= I18n.t(:order_number).to_s + " " + @order.number  %></p>
+      <p class="bold"> <%= I18n.l(@order.completed_at.to_date) if @order.completed_at %></p>
+    </div></td>
+  </tr>
+</table>

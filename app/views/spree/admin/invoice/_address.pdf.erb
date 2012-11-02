@@ -1,0 +1,38 @@
+<%
+bill_address = @order.bill_address
+ship_address = @order.ship_address
+anonymous = @order.email =~ /@example.net$/
+if (anonymous and Spree::Config[:suppress_anonymous_address]) or !bill_address
+  addresses = [[" "," "]] * 5 
+else
+  addresses = [[  "#{bill_address.firstname} #{bill_address.lastname}",  "#{ship_address.firstname} #{ship_address.lastname}", "#{bill_address.firstname} #{bill_address.lastname}"]]
+  addresses << [  bill_address.address1 , ship_address.address1, ""]
+  addresses << [  bill_address.address2 ,  ship_address.address2, ""]  unless bill_address.address2.blank? or ship_address.address2.blank? or (bill_address.address2 =~ /\d{3,6}-\d/) or  (ship_address.address2 =~ /\d{3,6}-\d/)
+  addresses << [  "#{bill_address.zipcode} #{bill_address.city}", "#{ship_address.zipcode} #{ship_address.city}", "" ]
+  addresses << [ bill_address.country.name , ship_address.country.name, "" ]
+  addresses << [ bill_address.phone , ship_address.phone, "" ]
+end
+%>
+<table class="address">
+  <tr>
+    <td width="49%" class="shiping_header bold"><%=I18n.t(:shipping_address)%></td>
+    <td width="2%"></td>
+    <% unless @packaging_slip %>
+    <td width="49%" class="billing_header bold"><%=I18n.t(:billing_address)%></td>
+    <% else %>
+    <td width="49%" class="billing_header bold">Buyer</td>
+    <% end %>
+  </tr>
+  <% addresses.each do |row| %>
+    <tr>   
+      <td height="15px" class="shiping" class="cell"><%=row[1]%></td>
+      <td></td>
+      <% unless @packaging_slip %>
+      <td height="15px" class="billing" class="cell"><%=row[0]%></td>
+    	<% else %>
+    	<td height="15px" class="billing" class="cell"><%=row[2]%></td>
+    	<% end %>
+    </tr>
+  <%end%>
+</table>
+
