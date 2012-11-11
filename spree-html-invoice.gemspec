@@ -1,4 +1,4 @@
-version = '0.1.1'
+version = '0.1.2'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
